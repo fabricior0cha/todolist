@@ -1,0 +1,11 @@
+*{
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+.card {
+    background-color: rgb(62, 62, 62);
+    border-radius: 10px;
+    height: 80vh;
+    width: 100%; 
+   
+}
