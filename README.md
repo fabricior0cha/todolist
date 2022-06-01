@@ -1,4 +1,6 @@
 # Todo List
+[Todo List](https://todolist-fabriciorocha.netlify.app/)
+
 Um aplicativo simples e responsivo que permite a criação, edição e exclusão de uma tarefa!
 
 ## Tecnologias
@@ -7,4 +9,6 @@ Um aplicativo simples e responsivo que permite a criação, edição e exclusão
 - Netlify (Deploy)
 
 ## Projeto em funcionamento
-<img src="src/assets/readme.gif" height: 400px>
+<img src="./src/assets/readme.gif">
+
+
