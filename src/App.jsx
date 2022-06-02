@@ -100,7 +100,7 @@ function App() {
             <Grid container>
               <Grid item xs={12}>
                 <Typography mt={3} align="center" color="white" variant="h5">
-                  Lista de tarefas
+                  Lista de tarefas [{tarefas.length}]
                 </Typography>
               </Grid>
               <Grid
