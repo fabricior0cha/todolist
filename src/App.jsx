@@ -2,13 +2,12 @@ import {
   Box,
   Button,
   Grid,
-  IconButton,
-  InputAdornment,
+  IconButton, 
   List,
   ListItem,
   Stack,
   TextField,
-  Typography,
+  Typography
 } from "@mui/material";
 import { Container, styled } from "@mui/system";
 import { useState } from "react";
@@ -49,8 +48,7 @@ function App() {
   const [tarefa, setTarefa] = useState({
     nome: "",
   });
-  const [tarefaEditar, setTarefaEditar] = useState(
-  [{nome: ""}]);
+  const [tarefaEditar, setTarefaEditar] = useState([{ nome: "" }]);
 
   function removerTarefa(index) {
     const tempTarefas = [...tarefas];
@@ -74,15 +72,17 @@ function App() {
   }
 
   function editarTarefa(index) {
+    if (tarefaEditar[index].nome === "") {
+      alert("O nome da tarefa não pode ser vazio!");
+      return;
+    }
     const novasTarefas = tarefas.slice();
     novasTarefas[index] = { tarefa: tarefaEditar[index].nome, editar: false };
     setTarefas(novasTarefas);
 
     const arr = tarefaEditar.slice();
-    arr[index] = {}
-    setTarefaEditar(arr)
-    
-    
+    arr[index] = {};
+    setTarefaEditar(arr);
   }
 
   return (
@@ -94,12 +94,19 @@ function App() {
           display={"flex"}
           mx={"auto"}
           py={3}
-          xs={8}
+          xs={12}
+          sm={8}
         >
           <div className="card">
             <Grid container>
               <Grid item xs={12}>
-                <Typography mt={3} align="center" color="white" variant="h5">
+                <Typography
+                  mt={3}
+                  px={4}
+                  align="center"
+                  color="white"
+                  variant="h5"
+                >
                   Lista de tarefas [{tarefas.length}]
                 </Typography>
               </Grid>
@@ -132,6 +139,7 @@ function App() {
                   color="secondary"
                   size="small"
                   label="Adiciona uma nova tarefa"
+                  inputProps={{ maxLength: 30 }}
                 />
 
                 <Button
@@ -187,25 +195,20 @@ function App() {
                               InputLabelProps={{
                                 shrink: true,
                               }}
-                              value={tarefaEditar[index] ? 
-                                tarefaEditar[index].nome : ""}
+                              value={
+                                tarefaEditar[index]
+                                  ? tarefaEditar[index].nome
+                                  : ""
+                              }
                               onChange={(e) => {
-                                
                                 const arr = tarefaEditar.splice();
-                                arr[index] =  {nome: e.target.value
-                                  .replaceAll(/^ {1,}/g, "")
-                                  .replaceAll(/ {2,}$/g, " ")
-                                  .replaceAll(/ {2,}/g, " ")}
-                                  setTarefaEditar(arr);
-                                // setTarefaEditar([...tarefaEditar,
-                                  
-                                //   {
-                                    
-                                //     nome: e.target.value
-                                //     .replaceAll(/^ {1,}/g, "")
-                                //     .replaceAll(/ {2,}$/g, " ")
-                                //     .replaceAll(/ {2,}/g, " ")}
-                                // ]);
+                                arr[index] = {
+                                  nome: e.target.value
+                                    .replaceAll(/^ {1,}/g, "")
+                                    .replaceAll(/ {2,}$/g, " ")
+                                    .replaceAll(/ {2,}/g, " "),
+                                };
+                                setTarefaEditar(arr);
                               }}
                               color="secondary"
                               size="small"
